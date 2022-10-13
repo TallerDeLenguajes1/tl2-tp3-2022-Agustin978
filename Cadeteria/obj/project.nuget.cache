@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E1TvNZ10B1aEWpjBaa6mW4KxDjod4VxklyiRQNHQQeqx36mE9SNd5r44DOMWo0tdbE0Peexxyy9muQPK3Simkw==",
+  "success": true,
+  "projectFilePath": "C:\\Cursos\\Programacion_UNT\\Taller_de_Lenguajes_2\\tl2-tp3-2022-Agustin978\\Cadeteria\\Cadeteria.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Agustin\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
