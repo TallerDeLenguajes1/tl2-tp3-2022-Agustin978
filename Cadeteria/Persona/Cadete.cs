@@ -8,7 +8,8 @@ class Cadete : Persona
     {
         this.pedidos = pedidos;
     }
-    public Pedido getPedidos(int pedido){return this.pedidos[pedido];}
+    public Pedido getPedido(int pedido){return this.pedidos[pedido];}
+    public List<Pedido> getPedidos(){return this.pedidos;}
     public float getJornal(){return this.jornalACobrar;}
 
     private void calculaJornalTotal()
@@ -31,7 +32,7 @@ class Cadete : Persona
 
     public void eliminaPedido(int nro)
     {
-        foreach(var pedido in this.pedidos)
+        foreach(var pedido in this.pedidos.ToArray())
         {
             if(pedido.getNroPedido() == nro)
             {
