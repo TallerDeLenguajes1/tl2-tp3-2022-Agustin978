@@ -3,6 +3,8 @@ Logger logger = LogManager.GetCurrentClassLogger();
 main();
 int main()
 {
+    string path = @"C:\Cursos\Programacion_UNT\Taller_de_Lenguajes_2\tl2-tp3-2022-Agustin978\Cadeteria\Files\cadeteria";
+    string ext = ".csv";
     List<Pedido> pedidos1 = new List<Pedido>();
     List<Pedido> pedidos2 = new List<Pedido>();
     Pedido pedido1 = new Pedido("Con salsa", 0, 2.52, "Agustin", "Rojas Paz 33", "3816431774", "Cerca del parque Guillermina");
@@ -21,9 +23,22 @@ int main()
     cadetes.Add(cadete1);
     cadetes.Add(cadete2);
     Cadeteria cadeteria = new Cadeteria("Sistema de cadetes de Agustin", "0000000", cadetes);
-    cadete2.eliminaPedido(1);
+    cadete2.eliminaPedido(4);
     cadete1.agregaPedido(pedido4);
     cadeteria.MuestraCadetes();
-
+    GuardaArchivo(path, ext, cadeteria);
     return 0;
+}
+
+void GuardaArchivo(string path, string ext, Cadeteria cadeteria)
+{
+    FileStream miArchivo = new FileStream(path+ext, FileMode.OpenOrCreate);
+    using(StreamWriter strWriter = new StreamWriter(miArchivo))
+    {
+        //strWriter.Write("{0};{1};{2}", );
+        foreach(var cadete in cadeteria.getCadetes())
+        {
+            strWriter.Write("{0};{1};{2}\n", cadeteria.getNombre(), cadeteria.getTelefono(), cadete.getNombre());
+        }
+    }
 }
