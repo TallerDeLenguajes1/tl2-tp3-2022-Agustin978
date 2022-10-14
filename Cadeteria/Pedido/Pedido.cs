@@ -4,19 +4,19 @@ class Pedido
     private static int autoIncremental;
     private int NroPedido;
     private string observacion {get;set;}
-    private Cliente cliente;
+    private Cliente? cliente = null;
     private string[] estado = new string[4] {"Tomado", "En proceso", "Despachado", "Entregado"};
     private string estadoP;
-    private float montoPaga;
+    private double montoPaga;
 
-    public Pedido(string observacion, Cliente cliente, int estado, float monto)
+    public Pedido(string observacion, int estado, double monto, string NombreCli, string direccion, string telefonoCli, string datosRefCli)
     {
         autoIncremental++;
         this.NroPedido = autoIncremental;
         this.observacion = observacion;
-        this.cliente = cliente;
         this.estadoP = this.estado[estado];
         this.montoPaga = monto;
+        CreaCliente(NombreCli, direccion, telefonoCli, datosRefCli);
     }
 
     //Metodo getter
@@ -25,7 +25,7 @@ class Pedido
     public Cliente GetCliente(){return this.cliente;}
     public string getEstadoPedido(){return this.estadoP;}
 
-    public float getMontoPagar(){return this.montoPaga;}
+    public double getMontoPagar(){return this.montoPaga;}
 
     //Metodo para mostrar el pedido
     public void muestraPedido()
@@ -39,5 +39,11 @@ class Pedido
         Console.WriteLine($"Telefono:                      {this.GetCliente().getTelefono()}");
         Console.WriteLine($"Id:                            {this.GetCliente().getID()}");
         Console.WriteLine($"Estado del pedido:             {this.getEstadoPedido()}");
+    }
+
+    //Metodo para crear al cliente
+    private void CreaCliente(string NombreCli, string direccion, string telefonoCli, string datosRefCli)
+    {
+        this.cliente = new Cliente(NombreCli, direccion, telefonoCli, datosRefCli);
     }
 }   
