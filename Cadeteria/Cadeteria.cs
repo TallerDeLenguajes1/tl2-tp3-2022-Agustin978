@@ -15,8 +15,8 @@ class Cadeteria
     {
         foreach(var cadete in this.cadetes)
         {
-            Console.WriteLine($"Nombre cadete: {cadete.getNombre}");
-            Console.WriteLine($"Direccion: {cadete.getDireccion}");
+            Console.WriteLine($"Nombre cadete: {cadete.getNombre()}");
+            Console.WriteLine($"Direccion: {cadete.getDireccion()}");
             Console.WriteLine($"ID: {cadete.getID()}");
             Console.WriteLine($"Telefono: {cadete.getTelefono()}");
             Console.WriteLine($"Monto a cobrar: {cadete.getJornal()}");
@@ -24,4 +24,9 @@ class Cadeteria
             cadete.muestraPedidos();
         }
     }
+
+    //metodos getter
+    public string getNombre(){return this.Nombre;}
+    public string getTelefono(){return this.telefono;}
+    public List<Cadete> getCadetes(){return this.cadetes;}
 }
