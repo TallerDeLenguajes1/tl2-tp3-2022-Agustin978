@@ -4,7 +4,7 @@ class Cadete : Persona
     private float jornalACobrar;
     private List<Pedido> pedidos;
     private Logger logger = LogManager.GetCurrentClassLogger();
-    public Cadete(string Nombre, string Direccion, int telefono, List<Pedido> pedidos):base(Nombre, Direccion, telefono)
+    public Cadete(string Nombre, string Direccion, string telefono, List<Pedido> pedidos):base(Nombre, Direccion, telefono)
     {
         this.pedidos = pedidos;
     }
@@ -18,7 +18,7 @@ class Cadete : Persona
             if(string.Equals(pedido.getEstadoPedido(),"Entregado"))
             {
                 this.jornalACobrar += 300;
-                this.logger.Trace($"El cadete {this.getNombre()}, con id {this.getID()}, realizo una entrega");
+                this.logger.Info($"El cadete {this.getNombre()}, con id {this.getID()}, realizo una entrega");
             }
         }
     }
@@ -26,6 +26,27 @@ class Cadete : Persona
     public void agregaPedido(Pedido p)
     {
         this.pedidos.Add(p);
-        this.logger.Trace($"Se ingreso un nuevo pedido al cadete {this.getNombre()}");
+        this.logger.Info($"Se ingreso un nuevo pedido al cadete {this.getNombre()}");
+    }
+
+    public void eliminaPedido(int nro)
+    {
+        foreach(var pedido in this.pedidos)
+        {
+            if(pedido.getNroPedido() == nro)
+            {
+                this.pedidos.Remove(pedido);
+                this.logger.Info($"Se elimino un pedido al cadete {this.getNombre()}");
+            }
+        }
+    }
+
+    public void muestraPedidos()
+    {
+        foreach(var pedido in this.pedidos)
+        {
+            pedido.muestraPedido();
+            Console.WriteLine("\n");
+        }
     }
 }
